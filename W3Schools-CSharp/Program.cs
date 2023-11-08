@@ -1,4 +1,7 @@
-﻿namespace W3Schools_CSharp;
+﻿using System.Linq;
+using System;
+
+namespace W3Schools_CSharp;
 class Program
 {
     static void Main(string[] args)
@@ -180,7 +183,7 @@ class Program
 
         // Learning more about arrays. Coming up!
         // The break statement can be used to jump out of a switch statement and out of a for loop as well. Or any loop.
-        // The following example jumps out of the loop when i = 4.
+        // The following example jumps out of the loop when t = 4.
         for (int t = 0; t <= 10; t++)
         {
             if(t == 4)
@@ -191,13 +194,174 @@ class Program
         }
 
         // The Continue statement
-        // The continue statement break one iteration in the loop. 
+        // The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the remaining loop interations.
+        // This example skips the value of 4:
+        for(int q = 0; q <= 10; q++)
+        {
+            if(q == 4)
+            {
+                continue;
+            }
+            Console.WriteLine(q);
+        }
+
+        // We can also have a break and continue in a while loop, not just a for loop.
+        // Break example in While Loop
+        int w = 0;
+        while(w < 10)
+        {
+            Console.WriteLine(w);
+            w++;
+            if (w == 4)
+            {
+                break;
+            }
+        }
+        // C# Arrays
+        // Creating arrays
+        // Arrays are used to store multiple values in a single variable, instead of declaring seperate variables for each value.
+        // To declare an array, we define the variable with the squares bracket.
+        string[] seasons = { "Winter", "Spring", "Summer", "Fall" };
+
+        // To create an array of integers, we'd write:
+        int[] myNums = { 1, 2, 3, 4, 5 };
+
+        // Changing an array element:
+        seasons[3] = "Baseball Season";
+
+        // It is important to note that if we declare an array and initialize it later, we have to use the new keyword.
+        // We can loop through an array!! Isn't that exciting!?
+        // We can loop through the array with a for loop and then use the Length property to specify how many times the loop is run.
+        // The following example outputs all elements in the seasons array:
+        for(int u = 0; u < seasons.Length; u++)
+        {
+            Console.WriteLine(seasons[u]);
+        }
+
+        // The foreach loop is used exclusively to loop through elements in an array. Can be integers or string. Elements in general for arrays.
+        foreach (string g in seasons)
+        {
+            Console.WriteLine(g);
+        }
+
+        // Sort is another array method.
+        Array.Sort(seasons);
+        foreach(string h in seasons)
+        {
+            Console.WriteLine(h);
+        }
+
+        // Other useful namespaces such as Min, Max, and Sum can be found in the System.Linq namespace
+        // For including namespaces, we need to put "using System.Linq" at the beginning of the cs class
+
+        int[] lotterynumbers = { 23, 34, 07, 02, 52 };
+        Console.WriteLine(lotterynumbers.Max());
+        Console.WriteLine(lotterynumbers.Sum());
+        // We will learn more about other namespaces in other chapters.
+
+        //Multidimensional arrays
+        // In the last chapter, we learned about single dimensional arrays, also known as arrays. These are great, and something you will use alot while programming in C#.
+        // However, if we want to store data in a tabular form, like a table with rows and columns, one needs to get familiar with multidimensional arrays.
+        // A multidimensional array is basically an array of arrays.
+        // Arrays can any number of dimensions. The most common are two dimensional arrays.
+        // int[,] would specify the delaration of a two dimensional array and int[,,] would specify the decleration of a three dimensional array. Woah!
+        // Example of two dimensional array:
+
+        int[,] coolnumbers = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 } };
+
+        // Coolnumbers is now an array with two individual arrays as its elements. With that being said, the first and second arrays within the coolnumbers array have elements of there own and those elements are the numbers.
+        // Accessing elements of a 2-D array
+        // To access elements of a two dimensional array, we must specify two indexes, one for the array and one for the element within that array that is within the coolnumbers array.
+        // Let's get that 7 number in the second element within the main array:
+        Console.WriteLine(coolnumbers[1, 2]);
+        // The same principles applies to changin the value of an elements inside of an array within an array.
+        // We can easily loop through the elements in an array with the foreach loop
+        // We can also use a for loop
+        // For multidimensional arrays, we need one loop for each of the arrays dimensions
+        // Also, we have to use GetLength() method instead of Length() to specify how many times to loops should run.
+
+        // C# Methods
+        // A method is a block of code that only runs when it is called
+        // You can pass data, known as parameters, into a method.
+        // Methods are used to perform certain actions and are also known as functions.
+        // Methods allow better scalability and code reusability
+        // A method is defined with a name of the method, followed by parenthesis. We already know of the Main() method which is predefined by C#
+        // We can define our own methods to perform certain actions.
+        // Let's create a method inside the program class that we are already in.
+        // MyMethod
+
+        MyMethod();
+
+        NameMethod("Kyle");
+        NameMethod("Ted");
+        NameMethod("Stephanie");
+        NameMethod("Sammy");
+        NameMethod();
 
 
-    
+        int zz = ReturnMethod(2, 4);
+        Console.WriteLine(zz);
+
 
 
     }
+
+    static void MyMethod()
+    {
+        // myMethod is the name of the method.
+        // static means that the method belongs to the program class rather than belonging to an object of the program class. Static means the method belongs to the program class.
+        // We will learn more about objects and how to access methods through objects later in this tutorial.
+        // void means that this method does not have a return value. I will learn mor about return values later in this chapter.
+        // In C#, begin methods with an uppercase letter. e.g. MyMethod(). We will do that in the future.
+        // You can define a method and you can call a method. You can probably do more with a method, but I haven't come across an instance where you can just yet. Call and define are different.
+        // Execute and calling a method are the same.
+        // To execute a method, type the method myMethod followed by parenthesis and a semicolon:
+
+        Console.WriteLine("This is the method is just created. I just got executed. The good kind of execution.");
+
+        // A method can be called multiple times.
+        // Method Parameters
+        // Parameters and Arguments
+        // Information can be passed to methods as a parameter. Parameters act as variables inside of a method.
+        // Parameters are specified after the method name inside of the paranthesis.
+        // I can add as many parameters as I want, I just need to seperate them with a comma.
+        // The following method has a string called fname as a parameter.
+    }
+
+
+    static void NameMethod(string fname = "Person")
+    {
+        Console.WriteLine(fname + "Nunn");
+        // We are calling this method, or executing this method, above in the Main section
+        // When a parameters is passed in a method, we call that the argument.
+        // So, in the above example, fname is the parameter and "Kyle", "Ted", etc are the arguments.
+        // C# Default Parameter Value
+        // I can also use default parameter value using the = sign.
+        // For example, we will use a default parameter if nothing is called of = Person
+        // A method with a default parameter is also known as an optional parameter.
+        // The void keyword when calling a method indicates that the method should not return a value.
+        // If we want to method to return a value, we can use a primitive data type such as double or int and put "return" inside the method that we are defining
+        // This means the return goes inside the curly brackets. We aren't putting return in the parameters area with a method.
+        // It is often good practice to store a result in a variable, it makes the code easier to read and maintain especially if a future user wants to get their hands on some legacy code.
+
+    }
+
+    static int ReturnMethod(int xx, int yy)
+    {
+        return xx + yy;
+        // We will call this method and define a variable for it in the above main method area.
+    }
+
+    // Named Arguments
+    // It is also possible to send arguments via the key: value syntax.
+    // This way, the order of arguments does not matter.
+
+    static void KidsMethod(string kid1, string kid2, string kid3)
+    {
+        Console.WriteLine("The youngest child is: " + kid3);
+    }
+
+
 }
 
 // Convert.To.Int32 is converting to an integer AND Convert.To.Int64 is long type integer.
