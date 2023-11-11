@@ -1,7 +1,10 @@
 ﻿using System.Linq;
 using System;
+using System.Runtime.ConstrainedExecution;
 
 namespace W3Schools_CSharp;
+
+
 class Program
 {
     static void Main(string[] args)
@@ -82,14 +85,15 @@ class Program
         // Using the switch statement to select one of the many code blocks to be executed.
         // Use the switch statement to execute one of the many code blocks to be executed.
         int month = 5;
-        switch (month){
+        switch (month)
+        {
             case 1:
-            Console.WriteLine("January");
-            break;
+                Console.WriteLine("January");
+                break;
 
             case 2:
-            Console.WriteLine("February");
-            break;
+                Console.WriteLine("February");
+                break;
         }
         // The switch expression is evaluated once.
         // The value of the expression is compared with the values of each case
@@ -104,7 +108,8 @@ class Program
 
         // Example:
         int day = 4;
-        switch(day){
+        switch (day)
+        {
             case 6:
                 Console.WriteLine("Saturday");
                 break;
@@ -151,7 +156,7 @@ class Program
         for (int k = 0; k <= 10; k = k + 2)
         {
             Console.WriteLine(k);
-       
+
         }
 
         // Between the statements in the for loop, it's important that we use semi colons.
@@ -176,7 +181,7 @@ class Program
         // The following example outputs all elements in the cars array, using foreach loop
 
         string[] cars = { "VW", "LAMBO", "Rari" };
-        foreach(string l in cars)
+        foreach (string l in cars)
         {
             Console.WriteLine(l);
         }
@@ -186,7 +191,7 @@ class Program
         // The following example jumps out of the loop when t = 4.
         for (int t = 0; t <= 10; t++)
         {
-            if(t == 4)
+            if (t == 4)
             {
                 break;
             }
@@ -196,9 +201,9 @@ class Program
         // The Continue statement
         // The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the remaining loop interations.
         // This example skips the value of 4:
-        for(int q = 0; q <= 10; q++)
+        for (int q = 0; q <= 10; q++)
         {
-            if(q == 4)
+            if (q == 4)
             {
                 continue;
             }
@@ -208,7 +213,7 @@ class Program
         // We can also have a break and continue in a while loop, not just a for loop.
         // Break example in While Loop
         int w = 0;
-        while(w < 10)
+        while (w < 10)
         {
             Console.WriteLine(w);
             w++;
@@ -233,7 +238,7 @@ class Program
         // We can loop through an array!! Isn't that exciting!?
         // We can loop through the array with a for loop and then use the Length property to specify how many times the loop is run.
         // The following example outputs all elements in the seasons array:
-        for(int u = 0; u < seasons.Length; u++)
+        for (int u = 0; u < seasons.Length; u++)
         {
             Console.WriteLine(seasons[u]);
         }
@@ -246,7 +251,7 @@ class Program
 
         // Sort is another array method.
         Array.Sort(seasons);
-        foreach(string h in seasons)
+        foreach (string h in seasons)
         {
             Console.WriteLine(h);
         }
@@ -302,7 +307,86 @@ class Program
         int zz = ReturnMethod(2, 4);
         Console.WriteLine(zz);
 
+        // Method overloading
+        int myNum1 = PlusMethod(4, 5);
+        double myNum2 = PlusMethod(9, 8);
+        Console.WriteLine(myNum1);
+        Console.WriteLine(myNum2);
 
+
+        // Looking at the Cars class from another file.
+        Cars myObj = new Cars();
+        Console.WriteLine(myObj.color);
+        Console.WriteLine(myObj.maxSpeed);
+
+
+        Cars VWJetta = new Cars();
+        VWJetta.Make = "Volkswagon";
+        VWJetta.Model = "Jetta";
+        VWJetta.Year = 2006;
+
+
+        Cars FordMustang = new Cars();
+        FordMustang.Make = "Ford";
+        FordMustang.Model = "Mustang";
+        FordMustang.Year = 2013;
+
+        Console.WriteLine(VWJetta.Year);
+        Console.WriteLine(FordMustang.Year);
+        myObj.fullThrottle();
+
+        Sports Baseball = new Sports("Yankees");         // Creating an object of the Sports class, which will call the constructor.
+        Console.WriteLine(Baseball.model); // Print the value of model
+
+        // The constructor name must match the class name and it can't have the return type of void or int.
+        // The constructor is called when the object is created.
+        // All classes have constructors by default. If I do not create one, C# creates one for me. However, then I'm not able to set values for fields.
+        // In the end, constructors save time, following the DRY principle of programming.
+        // Constructors can also take parameters, which are used to initialize fields.
+        // Just like other methods, constructors can be overloaded by using different number of parameters.
+
+
+        // Access Modifier
+        // One of the most common access modifiers is Public, which we have seen extensively throughout the course.
+        // C# access modifiers include public private protected and internal
+        // Public: code is accessible by all classes
+        // Private: code is only accessible within the same class
+        // Protected: The code is accessible within the same class, or within a class inherited from that class.
+        // Internal: The code is only accessible within its own assembly, but not from another assembly. I will learn more about assemblies in another chapter.
+        // Protected internal and private protected are also two combinations of access modifiers
+        // Access modifiers are used to achieve Encapsulation - which is the process of making sure that "sensitive" data is hidden from users. This is done by declaring fields as private.
+        // By default, all members of a class are private if I don't specify an access modifier.
+
+
+        // C# Properties (Get and Set)
+        // To achieve encapsulation, I must declare fields/values as private and provide public get and set methods to access and manipulate the value of a private field.
+        // A property is like a combination of a variable and method and it has two methods, get and set.
+
+
+        // Looking at encapsulation. Example found in the Person class.
+        Person miObj = new Person();
+        miObj.Name = "Kyle";
+        Console.WriteLine(miObj.Name);
+
+        // Looking at inheritance between the Vehicle and Cars classes.
+        Vehicle newVehicle = new Vehicle();
+        Console.WriteLine(newVehicle.makeName + " " + newVehicle.modelName);
+
+        // Polymorphism means "many forms."
+        // Polymorphism occurs when we have many classes connected to eachother through inheritance.
+        // Inheritance lets us access methods and fields from another class.
+        // Polymorphism uses those methods to perform different tasks.
+        // This allows us to perform a single action in different way.
+        // Take an athlete, for example. A sports player performs different actions depending on their sport. A football player scores a touchdown. Basketball player scores a goal. Baseball scores a run.
+
+        //SportType newSport = new SportType();
+        SportType newBaseball = new Baseball();
+        SportType newFootball = new Football();
+
+        //newSport.goalType();
+        newBaseball.goalType();
+        newFootball.goalType();
+        newBaseball.sleep();
 
     }
 
@@ -361,8 +445,40 @@ class Program
         Console.WriteLine("The youngest child is: " + kid3);
     }
 
+    // C# Method overloading
+    // With method overloading, multiple methods can have the same name with different parameters
+    // Instead of defining two methods that do the same thing, it is better to overload one and define the method with different types.
+    // Example. We will overload the PlusMethod method with two integer types: int and double
+    static int PlusMethod(int cc, int vv)
+    {
+        return cc + vv;
+    }
+    static double PlusMethod(double nn, double mm)
+    {
+        return nn + mm;
+    }
 
+    // We have object oriented programming and procedural programming
+    // Procedural is about writing procedures or methods that perform operations on the data.
+    // Object oriented programming is about creating objects that contain both data and methods.
+    // In OOP, there are classes and objects. Kyle is the class, ears, nose, and eyebrows are the objects.
+    // A class is a template for an object and the object is an instance of a class.
+    // In real life, a car is an object with attributes height and weight and methods of brake and drive.
+    // A class is like an object instructor, or a blueprint for creating objects.
+    // It is common practice to name the file and class the same thing.
+    // An object is creating from a class.
+    // Creating a class car and an object car
+    // Looking into the Truck class from the very top of the page.
+
+    // Below we will use the class Car which is in a different file.
+    // This procedure can be seen towards the top in the Main() method of the class Program.
+    
 }
+
+
+
+
+
 
 // Convert.To.Int32 is converting to an integer AND Convert.To.Int64 is long type integer.
 // Floating point and double are paired up together while long, short, and int are paired up together.
